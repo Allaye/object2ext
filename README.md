@@ -87,10 +87,10 @@ const Object2Ext = require('object2ext');
 const sampleData = [{ id: 1, text: 'this is a test' }];
 
 // Run asynchronously, without awaiting:
-new ObjectsToCsv(sampleData).toDisk('./tests.csv');
+new Object2Ext(sampleData).toDisk('./tests.csv');
 
 // Alternatively, you can append to the existing file:
-new ObjectsToCsv(sampleData).toDisk('./tests.csv', { append: true });
+new Object2Ext(sampleData).toDisk('./tests.csv', { append: true });
 
 // `allColumns: true` collects column names from all objects in the array,
 // instead of only using the first one. In this case the CSV file will

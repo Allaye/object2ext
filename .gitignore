@@ -1,0 +1,5 @@
+node_modules/
+.vs/
+test-manual.js
+exe.js
+test.csv

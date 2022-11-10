@@ -1,0 +1,31 @@
+{
+  "name": "object2ext",
+  "version": "0.0.3",
+  "description": "a small toolkit to converts js array of objects to other extension format most importantly. you can save to disk or return as string",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allaye/object2ext.git"
+  },
+  "keywords": [
+    "csv",
+    "ext",
+    "object"
+  ],
+  "author": "Kolade Gideon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allaye/object2ext/issues"
+  },
+  "homepage": "https://github.com/allaye/object2ext#readme",
+  "dependencies": {
+    "async-csv": "^2.1.3"
+  },
+  "devDependencies": {
+    "@types/async-csv": "^2.1.1"
+  }
+}

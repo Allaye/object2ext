@@ -31,7 +31,24 @@ class Object2Xlsx {
   //TODO - implement the method that generates the XML start row
   //TODO - implement the method that generates the XML end row
 
-  generateXML() {}
+
+  /**
+   * @description - this method returns the XML in a constructed and string format
+   */
+  generateXML(){
+    let tag = "";
+    tag = this.generateHeaders(tag);
+    tag = this.generateStartWorkbook(tag);
+    tag = this.generateStyles(tag);
+    tag = this.generateStartWorksheet(tag);
+    tag = this.generateStartTable(tag);
+    tag = this.generateHeaderRow(tag, this.arrayOfObjects[0]);
+    tag = this.generateDataRows(tag, this.arrayOfObjects);
+    tag = this.generateEndTable(tag);
+    tag = this.generateEndWorksheet(tag);
+    tag = this.generateEndWorkbook(tag);
+    return tag;
+  }
 
   /**
    * @description - this method returns the XML header

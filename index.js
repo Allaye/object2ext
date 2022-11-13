@@ -6,7 +6,7 @@ const fs = require('fs');
 /**
  * Converts an array of objects into a CSV file.
  */
-class Object2Ext {
+class Object2Csv {
   /**
    * Creates a new instance of the object array to csv converter.
    * @param {object[]} objectArray
@@ -200,4 +200,9 @@ async function convert(data, header = true, allColumns = false) {
 
   return await csv.stringify(csvInput);
 }
-module.exports = Object2Ext;
+
+
+
+
+
+module.exports = Object2Csv;

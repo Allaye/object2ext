@@ -89,14 +89,34 @@ class Object2Xlsx {
     return string;
   }
 
-
   /**
-   * 
-   * @param {*} string 
-   * @returns 
+   * @description - this method returns the XML end worksheet
+   * @param {*} string
+   * @returns
    */
   generateEndWorksheet(string) {
     string += "</Worksheet>";
+    return string;
+  }
+
+  /**
+   * @description - this method returns the XML start table
+   * @param {*} string
+   * @returns
+   */
+  generateStartTable(string) {
+    string += "<Table>";
+    return string;
+  }
+
+
+  /**
+   * @description - this method returns the XML end table
+   * @param {*} string 
+   * @returns 
+   */
+  generateEndTable(string) {
+    string += "</Table>";
     return string;
   }
 }

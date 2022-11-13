@@ -20,7 +20,7 @@ class Object2Xlsx {
 
   //TODO - implement the method the calls the other methods to create the XML/Excel content
   //TODO - implement the method that saves the XML/Excel content to a file
-  //TODO - implement the method that returns the XML/Excel content as a string
+  //TODO - implement the method that returns the XML/Excel content as a tag
   //TODO - implement the method that generates the XML header
   //TODO - implement the method that generates the XML start workbook
   //TODO - implement the method that generates the XML styles
@@ -35,104 +35,120 @@ class Object2Xlsx {
 
   /**
    * @description - this method returns the XML header
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateHeaders(string) {
-    string += '<?xml version="1.0" encoding="UTF-8"?>';
-    string += '<?mso-application progid="Excel.Sheet"?>';
-    return string;
+  generateHeaders(tag) {
+    tag += '<?xml version="1.0" encoding="UTF-8"?>';
+    tag += '<?mso-application progid="Excel.Sheet"?>';
+    return tag;
   }
 
   /**
    * @description - this method returns the XML start workbook
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateStartWorkbook(string) {
-    string +=
+  generateStartWorkbook(tag) {
+    tag +=
       '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">';
-    return string;
+    return tag;
   }
 
   /**
    * @description - this method returns the XML styles for workbook end tag
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateEndWorkbook(string) {
-    string += "</Workbook>";
-    return string;
+  generateEndWorkbook(tag) {
+    tag += "</Workbook>";
+    return tag;
   }
 
   /**
    * @description - this method returns the XML styles for worksheet end tag
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateStyles(string) {
-    string += "<Styles>";
-    string += '<Style ss:ID="s21">';
-    string += '<Alignment ss:Vertical="Bottom"/>';
-    string += "</Style>";
-    string += "</Styles>";
-    return string;
+  generateStyles(tag) {
+    tag += "<Styles>";
+    tag += '<Style ss:ID="s21">';
+    tag += '<Alignment ss:Vertical="Bottom"/>';
+    tag += "</Style>";
+    tag += "</Styles>";
+    return tag;
   }
 
   /**
    * @description - this method returns the XML start worksheet
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateStartWorksheet(string) {
-    string += '<Worksheet ss:Name="Export">';
-    return string;
+  generateStartWorksheet(tag) {
+    tag += '<Worksheet ss:Name="Export">';
+    return tag;
   }
 
   /**
    * @description - this method returns the XML end worksheet
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateEndWorksheet(string) {
-    string += "</Worksheet>";
-    return string;
+  generateEndWorksheet(tag) {
+    tag += "</Worksheet>";
+    return tag;
   }
 
   /**
    * @description - this method returns the XML start table
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateStartTable(string) {
-    string += "<Table>";
-    return string;
+  generateStartTable(tag) {
+    tag += "<Table>";
+    return tag;
   }
 
   /**
    * @description - this method returns the XML end table
-   * @param {*} string
+   * @param {*} tag
    * @returns
    */
-  generateEndTable(string) {
-    string += "</Table>";
-    return string;
+  generateEndTable(tag) {
+    tag += "</Table>";
+    return tag;
   }
-
 
   /**
    * @description - this method returns the XML start row
-   * @param {*} string 
-   * @param {*} object 
-   * @returns 
+   * @param {*} tag
+   * @param {*} object
+   * @returns
    */
-  generateHeaderRow(string, object) {
-    string += '<Row ss:StyleID="1">';
+  generateHeaderRow(tag, object) {
+    tag += '<Row ss:StyleID="1">';
     for (const key in object) {
-      string += `<Cell><Data ss:Type="String">${key}</Data></Cell>`;
+      tag += `<Cell><Data ss:Type="tag">${key}</Data></Cell>`;
     }
-    string += "</Row>";
-    return string;
+    tag += "</Row>";
+    return tag;
+  }
+
+  generateDataRows(tag, rows){
+    for (let row of rows) {
+      tag += "<Row>";
+      for (let key in row) {
+        const value = row[key];
+
+        let excelType = "tag";
+        if (Type(value) === "number") excelType = "Number";
+
+        tag +=
+          '<Cell><Data ss:Type="' + excelType + '">' + value + "</Data></Cell>";
+      }
+      tag += "</Row>";
+    }
+    return tag;
   }
 }
 

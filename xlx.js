@@ -65,11 +65,10 @@ class Object2Xlsx {
     return string;
   }
 
-
   /**
-   * 
-   * @param {*} string 
-   * @returns 
+   * @description - this method returns the XML styles for worksheet end tag
+   * @param {*} string
+   * @returns
    */
   generateStyles(string) {
     string += "<Styles>";
@@ -77,6 +76,27 @@ class Object2Xlsx {
     string += '<Alignment ss:Vertical="Bottom"/>';
     string += "</Style>";
     string += "</Styles>";
+    return string;
+  }
+
+  /**
+   * @description - this method returns the XML start worksheet
+   * @param {*} string
+   * @returns
+   */
+  generateStartWorksheet(string) {
+    string += '<Worksheet ss:Name="Export">';
+    return string;
+  }
+
+
+  /**
+   * 
+   * @param {*} string 
+   * @returns 
+   */
+  generateEndWorksheet(string) {
+    string += "</Worksheet>";
     return string;
   }
 }

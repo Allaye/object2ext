@@ -109,14 +109,29 @@ class Object2Xlsx {
     return string;
   }
 
-
   /**
    * @description - this method returns the XML end table
-   * @param {*} string 
-   * @returns 
+   * @param {*} string
+   * @returns
    */
   generateEndTable(string) {
     string += "</Table>";
+    return string;
+  }
+
+
+  /**
+   * @description - this method returns the XML start row
+   * @param {*} string 
+   * @param {*} object 
+   * @returns 
+   */
+  generateHeaderRow(string, object) {
+    string += '<Row ss:StyleID="1">';
+    for (const key in object) {
+      string += `<Cell><Data ss:Type="String">${key}</Data></Cell>`;
+    }
+    string += "</Row>";
     return string;
   }
 }

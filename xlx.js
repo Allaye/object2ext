@@ -46,12 +46,37 @@ class Object2Xlsx {
 
   /**
    * @description - this method returns the XML start workbook
+   * @param {*} string
+   * @returns
+   */
+  generateStartWorkbook(string) {
+    string +=
+      '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">';
+    return string;
+  }
+
+  /**
+   * @description - this method returns the XML styles for workbook end tag
+   * @param {*} string
+   * @returns
+   */
+  generateEndWorkbook(string) {
+    string += "</Workbook>";
+    return string;
+  }
+
+
+  /**
+   * 
    * @param {*} string 
    * @returns 
    */
-  generateStartWorkbook(string){
-    string +=
-      '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">';
+  generateStyles(string) {
+    string += "<Styles>";
+    string += '<Style ss:ID="s21">';
+    string += '<Alignment ss:Vertical="Bottom"/>';
+    string += "</Style>";
+    string += "</Styles>";
     return string;
   }
 }

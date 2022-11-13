@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/allaye/object2ext#readme",
   "dependencies": {
+    "array-of-object-to-excel-xml": "^1.0.2",
     "async-csv": "^2.1.3"
   },
   "devDependencies": {

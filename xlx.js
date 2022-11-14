@@ -1,4 +1,4 @@
-
+const Type = require("type-detect");
 
 /**
  * Converts an array of objects into an Excel file.
@@ -31,11 +31,10 @@ class Object2Xlsx {
   //TODO - implement the method that generates the XML start row
   //TODO - implement the method that generates the XML end row
 
-
   /**
    * @description - this method returns the XML in a constructed and string format
    */
-  generateXML(){
+  generateXML() {
     let tag = "";
     tag = this.generateHeaders(tag);
     tag = this.generateStartWorkbook(tag);
@@ -48,6 +47,18 @@ class Object2Xlsx {
     tag = this.generateEndWorksheet(tag);
     tag = this.generateEndWorkbook(tag);
     return tag;
+  }
+
+  /**
+   * @description - save the generated xml string as an excel file on disk
+   * @param {*} path
+   * @param {*} fileName
+   */
+  toDisk(path, fileName) {
+    const tag = this.generateXML();
+    const fs = require("fs");
+    const dir = path + "/" + fileName + ".xls";
+    fs.writeFileSync(dir, tag);
   }
 
   /**
@@ -151,7 +162,7 @@ class Object2Xlsx {
     return tag;
   }
 
-  generateDataRows(tag, rows){
+  generateDataRows(tag, rows) {
     for (let row of rows) {
       tag += "<Row>";
       for (let key in row) {
@@ -176,15 +187,14 @@ function isEmptyObject(obj) {
 
 // LOOP THROUGH AN ARRAY OF OBJECTS
 function isArrayOK(arr) {
-    if (arr.length === 0) return false;
-    for (let i = 0; i < arr.length; i++) {
-        // console.log(arr[i]);
-        if (isEmptyObject(arr[i]) || arr[i].constructor.name != "Object") {
-        return false;
-        }
+  if (arr.length === 0) return false;
+  for (let i = 0; i < arr.length; i++) {
+    // console.log(arr[i]);
+    if (isEmptyObject(arr[i]) || arr[i].constructor.name != "Object") {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 module.exports = Object2Xlsx;
-

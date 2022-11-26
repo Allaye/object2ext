@@ -2,8 +2,10 @@
   "name": "object2ext",
   "version": "0.0.3",
   "description": "a small toolkit to converts js array of objects to other extension format most importantly. you can save to disk or return as string",
-  "main": "index.js",
+  "main": "./index.js",
+  "typings": "./index.d.ts",
   "type": "commonjs",
+  "exports": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

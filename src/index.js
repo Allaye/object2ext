@@ -211,7 +211,4 @@ async function convert(data, header = true, allColumns = false) {
 }
 
 
-
-
-
 module.exports = Object2Csv;

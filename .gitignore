@@ -3,3 +3,4 @@ node_modules/
 test-manual.js
 exe.js
 test.csv
+package-lock.json

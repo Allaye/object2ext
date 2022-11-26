@@ -9,7 +9,7 @@
 
 <h3 align="center">Object2Ext</h3>
 
-[![Made with 🥰💝💖💗](https://img.shields.io/badge/made%20with-love-008751.svg?style=flat-square)](https://github.com/allaye/object2ext)
+[![status](https://img.shields.io/badge/made%20with%20-%F0%9F%A5%B0%F0%9F%92%9D%F0%9F%92%96%F0%9F%92%97-red)](https://github.com/allaye/object2ext)
 [![latest release](https://img.shields.io/badge/npm-v1.5.2-blue.svg)](https://www.npmjs.com/package/object2ext/)
 [![status](https://img.shields.io/badge/status-stable-brightgreen.svg)](./)
 
